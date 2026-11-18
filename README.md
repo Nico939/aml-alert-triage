@@ -71,6 +71,15 @@ export ANTHROPIC_API_KEY=...                         # optional
 python src/llm_summary.py 5
 ```
 
+## Scaling with PySpark on Databricks
+
+`src/spark_features.py` re-implements data preparation and the 39 features with Spark DataFrames, and `databricks/aml_pyspark_databricks.py` runs the pipeline on Databricks (Free Edition, serverless): raw CSV in a Unity Catalog volume → Delta tables for transactions, weekly features and the alert queue, with the XGBoost run tracked in MLflow.
+
+- **Parity check**: the Spark features reproduce the pandas version exactly (404,273 train accounts, 2,799 positives), and the rules baseline gives identical metrics on both platforms
+- **XGBoost on Databricks**: PR-AUC 0.210, precision@500 0.704 (vs 0.211 and 0.726 locally). The small gap comes from XGBoost version and hardware differences in tree building, not from the features
+
+At 5M rows pandas is enough; the Spark version shows how the same logic runs when transaction volumes reach bank scale.
+
 ## Limitations and next steps
 
 - Synthetic data: patterns are cleaner than in real transactions, and there is no KYC or customer profile data
