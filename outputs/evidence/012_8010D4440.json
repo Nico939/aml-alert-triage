@@ -1,0 +1,122 @@
+{
+  "account": "012_8010D4440",
+  "review_window": "2022-09-06 to 2022-09-10",
+  "model_risk_score": 0.996,
+  "alert_rank": 4,
+  "top_model_drivers": {
+    "out_n_currencies": 4.0,
+    "out_share_ach": 1.0,
+    "in_share_ach": 1.0,
+    "out_usd_max": 916645.83,
+    "in_usd_max": 14777.72
+  },
+  "account_profile": {
+    "outgoing transactions": 12.0,
+    "incoming transactions": 4.0,
+    "total sent (USD)": 1063543.49,
+    "total received (USD)": 34820.08,
+    "largest payment sent (USD)": 916645.83,
+    "largest payment received (USD)": 14777.72,
+    "distinct recipients": 11.0,
+    "distinct senders": 4.0,
+    "currencies used when sending": 4.0,
+    "pass-through ratio (0-1)": 0.03,
+    "share of outgoing payments via ACH": 1.0,
+    "share of incoming payments via ACH": 1.0,
+    "most payments sent in one hour": 2.0,
+    "share of outgoing payments with currency conversion": 0.0
+  },
+  "transactions": [
+    {
+      "ts": "2022-09-06 02:28",
+      "direction": "IN",
+      "counterparty": "0010441_80EBE2F00",
+      "amount": 14746.07,
+      "pay_cur": "US Dollar",
+      "recv_cur": "US Dollar",
+      "pay_format": "ACH"
+    },
+    {
+      "ts": "2022-09-06 12:20",
+      "direction": "IN",
+      "counterparty": "019023_80514C390",
+      "amount": 134.14,
+      "pay_cur": "US Dollar",
+      "recv_cur": "US Dollar",
+      "pay_format": "ACH"
+    },
+    {
+      "ts": "2022-09-06 12:20",
+      "direction": "OUT",
+      "counterparty": "012_8010D4440",
+      "amount": 2321.52,
+      "pay_cur": "US Dollar",
+      "recv_cur": "Euro",
+      "pay_format": "ACH"
+    },
+    {
+      "ts": "2022-09-06 12:20",
+      "direction": "OUT",
+      "counterparty": "026818_8021F0F10",
+      "amount": 1981.18,
+      "pay_cur": "Euro",
+      "recv_cur": "Euro",
+      "pay_format": "ACH"
+    },
+    {
+      "ts": "2022-09-06 13:26",
+      "direction": "IN",
+      "counterparty": "001241_801228520",
+      "amount": 14777.72,
+      "pay_cur": "US Dollar",
+      "recv_cur": "US Dollar",
+      "pay_format": "ACH"
+    },
+    {
+      "ts": "2022-09-06 14:06",
+      "direction": "IN",
+      "counterparty": "012_80226C7A0",
+      "amount": 5162.15,
+      "pay_cur": "US Dollar",
+      "recv_cur": "US Dollar",
+      "pay_format": "ACH"
+    },
+    {
+      "ts": "2022-09-07 06:16",
+      "direction": "OUT",
+      "counterparty": "0017708_80CD41030",
+      "amount": 18721.33,
+      "pay_cur": "US Dollar",
+      "recv_cur": "US Dollar",
+      "pay_format": "ACH"
+    },
+    {
+      "ts": "2022-09-07 07:38",
+      "direction": "OUT",
+      "counterparty": "012_8010D4440",
+      "amount": 6942.71,
+      "pay_cur": "US Dollar",
+      "recv_cur": "Yuan",
+      "pay_format": "ACH"
+    },
+    {
+      "ts": "2022-09-07 07:38",
+      "direction": "OUT",
+      "counterparty": "029715_80C2D6120",
+      "amount": 46499.47,
+      "pay_cur": "Yuan",
+      "recv_cur": "Yuan",
+      "pay_format": "ACH"
+    },
+    {
+      "ts": "2022-09-07 17:29",
+      "direction": "OUT",
+      "counterparty": "005836_80485EDA0",
+      "amount": 16509.39,
+      "pay_cur": "US Dollar",
+      "recv_cur": "US Dollar",
+      "pay_format": "ACH"
+    }
+  ],
+  "transactions_shown": "10 of 23"
+}

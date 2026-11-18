@@ -1,0 +1,77 @@
+{
+  "account": "001665_800F24BE0",
+  "review_window": "2022-09-06 to 2022-09-10",
+  "model_risk_score": 0.995,
+  "alert_rank": 5,
+  "top_model_drivers": {
+    "out_n_currencies": 2.0,
+    "out_share_ach": 1.0,
+    "in_share_ach": 1.0,
+    "out_usd_max": 16389.14,
+    "in_usd_max": 16389.1375
+  },
+  "account_profile": {
+    "outgoing transactions": 3.0,
+    "incoming transactions": 1.0,
+    "total sent (USD)": 21423.05,
+    "total received (USD)": 16389.14,
+    "largest payment sent (USD)": 16389.14,
+    "largest payment received (USD)": 16389.14,
+    "distinct recipients": 2.0,
+    "distinct senders": 1.0,
+    "currencies used when sending": 2.0,
+    "pass-through ratio (0-1)": 0.77,
+    "share of outgoing payments via ACH": 1.0,
+    "share of incoming payments via ACH": 1.0,
+    "most payments sent in one hour": 2.0,
+    "share of outgoing payments with currency conversion": 0.0
+  },
+  "transactions": [
+    {
+      "ts": "2022-09-08 13:50",
+      "direction": "IN",
+      "counterparty": "023842_8019C0990",
+      "amount": 13986.49,
+      "pay_cur": "Euro",
+      "recv_cur": "Euro",
+      "pay_format": "ACH"
+    },
+    {
+      "ts": "2022-09-09 01:11",
+      "direction": "OUT",
+      "counterparty": "011_800F27210",
+      "amount": 1268.09,
+      "pay_cur": "Euro",
+      "recv_cur": "Euro",
+      "pay_format": "ACH"
+    },
+    {
+      "ts": "2022-09-10 21:37",
+      "direction": "OUT",
+      "counterparty": "001665_800F24BE0",
+      "amount": 17014.34,
+      "pay_cur": "Euro",
+      "recv_cur": "US Dollar",
+      "pay_format": "ACH"
+    },
+    {
+      "ts": "2022-09-10 21:37",
+      "direction": "OUT",
+      "counterparty": "021258_8028E8460",
+      "amount": 3547.98,
+      "pay_cur": "US Dollar",
+      "recv_cur": "US Dollar",
+      "pay_format": "ACH"
+    },
+    {
+      "ts": "2022-09-10 21:37",
+      "direction": "OUT",
+      "counterparty": "021258_8028E8460",
+      "amount": 16389.14,
+      "pay_cur": "US Dollar",
+      "recv_cur": "US Dollar",
+      "pay_format": "ACH"
+    }
+  ],
+  "transactions_shown": "5 of 5"
+}

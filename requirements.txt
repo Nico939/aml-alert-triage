@@ -1,0 +1,8 @@
+pandas>=2.0
+pyarrow
+numpy
+scikit-learn
+xgboost
+matplotlib
+anthropic
+python-dotenv

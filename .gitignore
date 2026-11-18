@@ -1,0 +1,5 @@
+data/
+__pycache__/
+.DS_Store
+WALKTHROUGH_zh.md
+.env

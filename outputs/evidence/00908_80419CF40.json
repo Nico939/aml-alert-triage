@@ -1,0 +1,77 @@
+{
+  "account": "00908_80419CF40",
+  "review_window": "2022-09-06 to 2022-09-10",
+  "model_risk_score": 0.996,
+  "alert_rank": 2,
+  "top_model_drivers": {
+    "out_n_currencies": 2.0,
+    "out_share_ach": 1.0,
+    "in_share_ach": 1.0,
+    "out_usd_max": 15362.8579,
+    "in_usd_max": 15362.86
+  },
+  "account_profile": {
+    "outgoing transactions": 3.0,
+    "incoming transactions": 1.0,
+    "total sent (USD)": 19622.01,
+    "total received (USD)": 15362.86,
+    "largest payment sent (USD)": 15362.86,
+    "largest payment received (USD)": 15362.86,
+    "distinct recipients": 2.0,
+    "distinct senders": 1.0,
+    "currencies used when sending": 2.0,
+    "pass-through ratio (0-1)": 0.78,
+    "share of outgoing payments via ACH": 1.0,
+    "share of incoming payments via ACH": 1.0,
+    "most payments sent in one hour": 2.0,
+    "share of outgoing payments with currency conversion": 0.0
+  },
+  "transactions": [
+    {
+      "ts": "2022-09-07 11:25",
+      "direction": "OUT",
+      "counterparty": "021611_8041A4DD0",
+      "amount": 2582.51,
+      "pay_cur": "US Dollar",
+      "recv_cur": "US Dollar",
+      "pay_format": "ACH"
+    },
+    {
+      "ts": "2022-09-09 00:26",
+      "direction": "IN",
+      "counterparty": "0134939_80CE705C0",
+      "amount": 15362.86,
+      "pay_cur": "US Dollar",
+      "recv_cur": "US Dollar",
+      "pay_format": "ACH"
+    },
+    {
+      "ts": "2022-09-09 16:53",
+      "direction": "OUT",
+      "counterparty": "00908_80419CF40",
+      "amount": 17039.5,
+      "pay_cur": "US Dollar",
+      "recv_cur": "Yuan",
+      "pay_format": "ACH"
+    },
+    {
+      "ts": "2022-09-09 16:53",
+      "direction": "OUT",
+      "counterparty": "018067_80467E970",
+      "amount": 11229.46,
+      "pay_cur": "Yuan",
+      "recv_cur": "Yuan",
+      "pay_format": "ACH"
+    },
+    {
+      "ts": "2022-09-09 16:53",
+      "direction": "OUT",
+      "counterparty": "018067_80467E970",
+      "amount": 102894.28,
+      "pay_cur": "Yuan",
+      "recv_cur": "Yuan",
+      "pay_format": "ACH"
+    }
+  ],
+  "transactions_shown": "5 of 5"
+}
