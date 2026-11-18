@@ -94,6 +94,8 @@ At 5M rows pandas is enough; the Spark version shows how the same logic runs whe
 │   ├── prepare_data.py   # load CSV, convert to USD, keep Sep 1-10
 │   ├── features.py       # 39 account-level behavioural features
 │   ├── train.py          # rules, Isolation Forest, XGBoost, ablation, metrics, alert queue
-│   └── llm_summary.py    # evidence packs, LLM summaries, faithfulness check
+│   ├── llm_summary.py    # evidence packs, LLM summaries, faithfulness check
+│   └── spark_features.py # PySpark version of data prep and features
+├── databricks/           # Databricks notebook: Delta tables, MLflow tracking
 └── outputs/              # metrics, figures, alert queue, case summaries, evidence packs
 ```
