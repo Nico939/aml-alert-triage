@@ -54,6 +54,11 @@ Takeaways:
 - **Faithfulness check**: every number in the generated text is matched against the evidence pack, and unmatched numbers are flagged as possible hallucinations
 - **Fallback**: without an `ANTHROPIC_API_KEY`, a rule-based template writes the summary, so the pipeline always runs end to end
 
+What the real run with Claude showed:
+- **The LLM caught a data inconsistency in my own pipeline.** Profile features excluded self-transfers (an account exchanging currency with itself) while the transaction list included them, and Claude flagged the mismatch ("the profile lists 3 outgoing transactions, but 4 are shown"). The evidence pack now labels self-transfers explicitly
+- **It surfaced patterns the features only hint at**, e.g. 15,362.86 USD received, exchanged to Yuan, and sent out as a Yuan payment worth exactly 15,362.86 USD the same day
+- **The faithfulness check flags derived numbers too**: "about 16.5 hours" (00:26 to 16:53) is correct but computed, so it is flagged for a reviewer to confirm. The check is a triage aid for human review, not a guarantee
+
 ## Run it
 
 Open `aml_project.ipynb` in Jupyter or VS Code and run all cells, or use the scripts:

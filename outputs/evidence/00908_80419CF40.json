@@ -26,52 +26,58 @@
     "most payments sent in one hour": 2.0,
     "share of outgoing payments with currency conversion": 0.0
   },
+  "notes": "Profile figures exclude self-transfers. amount_native is in pay_cur; amount_usd is converted with dataset-implied rates.",
   "transactions": [
     {
       "ts": "2022-09-07 11:25",
       "direction": "OUT",
       "counterparty": "021611_8041A4DD0",
-      "amount": 2582.51,
+      "amount_native": 2582.51,
       "pay_cur": "US Dollar",
       "recv_cur": "US Dollar",
+      "amount_usd": 2582.51,
       "pay_format": "ACH"
     },
     {
       "ts": "2022-09-09 00:26",
       "direction": "IN",
       "counterparty": "0134939_80CE705C0",
-      "amount": 15362.86,
+      "amount_native": 15362.86,
       "pay_cur": "US Dollar",
       "recv_cur": "US Dollar",
+      "amount_usd": 15362.86,
       "pay_format": "ACH"
     },
     {
       "ts": "2022-09-09 16:53",
-      "direction": "OUT",
-      "counterparty": "00908_80419CF40",
-      "amount": 17039.5,
+      "direction": "SELF (currency exchange)",
+      "counterparty": "-",
+      "amount_native": 17039.5,
       "pay_cur": "US Dollar",
       "recv_cur": "Yuan",
+      "amount_usd": 17039.5,
       "pay_format": "ACH"
     },
     {
       "ts": "2022-09-09 16:53",
       "direction": "OUT",
       "counterparty": "018067_80467E970",
-      "amount": 11229.46,
+      "amount_native": 11229.46,
       "pay_cur": "Yuan",
       "recv_cur": "Yuan",
+      "amount_usd": 1676.64,
       "pay_format": "ACH"
     },
     {
       "ts": "2022-09-09 16:53",
       "direction": "OUT",
       "counterparty": "018067_80467E970",
-      "amount": 102894.28,
+      "amount_native": 102894.28,
       "pay_cur": "Yuan",
       "recv_cur": "Yuan",
+      "amount_usd": 15362.86,
       "pay_format": "ACH"
     }
   ],
-  "transactions_shown": "5 of 5"
+  "transactions_shown": "5 of 5 (1 self-transfers)"
 }

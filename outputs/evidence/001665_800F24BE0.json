@@ -26,52 +26,58 @@
     "most payments sent in one hour": 2.0,
     "share of outgoing payments with currency conversion": 0.0
   },
+  "notes": "Profile figures exclude self-transfers. amount_native is in pay_cur; amount_usd is converted with dataset-implied rates.",
   "transactions": [
     {
       "ts": "2022-09-08 13:50",
       "direction": "IN",
       "counterparty": "023842_8019C0990",
-      "amount": 13986.49,
+      "amount_native": 13986.49,
       "pay_cur": "Euro",
       "recv_cur": "Euro",
+      "amount_usd": 16389.14,
       "pay_format": "ACH"
     },
     {
       "ts": "2022-09-09 01:11",
       "direction": "OUT",
       "counterparty": "011_800F27210",
-      "amount": 1268.09,
+      "amount_native": 1268.09,
       "pay_cur": "Euro",
       "recv_cur": "Euro",
+      "amount_usd": 1485.93,
       "pay_format": "ACH"
     },
     {
       "ts": "2022-09-10 21:37",
-      "direction": "OUT",
-      "counterparty": "001665_800F24BE0",
-      "amount": 17014.34,
+      "direction": "SELF (currency exchange)",
+      "counterparty": "-",
+      "amount_native": 17014.34,
       "pay_cur": "Euro",
       "recv_cur": "US Dollar",
+      "amount_usd": 19937.12,
       "pay_format": "ACH"
     },
     {
       "ts": "2022-09-10 21:37",
       "direction": "OUT",
       "counterparty": "021258_8028E8460",
-      "amount": 3547.98,
+      "amount_native": 3547.98,
       "pay_cur": "US Dollar",
       "recv_cur": "US Dollar",
+      "amount_usd": 3547.98,
       "pay_format": "ACH"
     },
     {
       "ts": "2022-09-10 21:37",
       "direction": "OUT",
       "counterparty": "021258_8028E8460",
-      "amount": 16389.14,
+      "amount_native": 16389.14,
       "pay_cur": "US Dollar",
       "recv_cur": "US Dollar",
+      "amount_usd": 16389.14,
       "pay_format": "ACH"
     }
   ],
-  "transactions_shown": "5 of 5"
+  "transactions_shown": "5 of 5 (1 self-transfers)"
 }

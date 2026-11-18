@@ -18,6 +18,7 @@ import json
 import os
 import re
 import sys
+import numpy as np
 import pandas as pd
 
 try:                                     # read ANTHROPIC_API_KEY from a local .env file if present
@@ -57,12 +58,17 @@ def evidence_pack(alert, feats, tx):
     acct = alert.account
     f = feats.loc[acct]
     acct_tx = tx[(tx.from_id == acct) | (tx.to_id == acct)].sort_values("ts")
+    # Self-transfers (the account paying itself, usually a currency exchange) are excluded from the
+    # profile features, so they are labelled separately here to keep the pack consistent.
+    is_self = acct_tx.from_id == acct_tx.to_id
     sample = acct_tx.head(10).assign(
-        direction=lambda d: (d.from_id == acct).map({True: "OUT", False: "IN"}),
-        counterparty=lambda d: d.to_id.where(d.from_id == acct, d.from_id),
+        direction=lambda d: np.where(d.from_id == d.to_id, "SELF (currency exchange)",
+                                     np.where(d.from_id == acct, "OUT", "IN")),
+        counterparty=lambda d: np.where(d.from_id == d.to_id, "-", np.where(d.from_id == acct, d.to_id, d.from_id)),
         ts=lambda d: d.ts.dt.strftime("%Y-%m-%d %H:%M"),
-        amount=lambda d: d.amt_paid.round(2),
-    )[["ts", "direction", "counterparty", "amount", "pay_cur", "recv_cur", "pay_format"]]
+        amount_native=lambda d: d.amt_paid.round(2),
+        amount_usd=lambda d: d.amt_usd.round(2),
+    )[["ts", "direction", "counterparty", "amount_native", "pay_cur", "recv_cur", "amount_usd", "pay_format"]]
     return {
         "account": acct,
         "review_window": f"{SPLIT} to 2022-09-10",
@@ -70,8 +76,10 @@ def evidence_pack(alert, feats, tx):
         "alert_rank": int(alert["rank"]),
         "top_model_drivers": json.loads(alert.top_drivers),
         "account_profile": {name: round(float(f[col]), 2) for col, name in FEATURE_NAMES.items()},
+        "notes": ("Profile figures exclude self-transfers. amount_native is in pay_cur; "
+                  "amount_usd is converted with dataset-implied rates."),
         "transactions": sample.to_dict(orient="records"),
-        "transactions_shown": f"{len(sample)} of {len(acct_tx)}",
+        "transactions_shown": f"{len(sample)} of {len(acct_tx)} ({int(is_self.sum())} self-transfers)",
     }
 
 
@@ -79,10 +87,11 @@ def summarise_with_llm(pack):
     import anthropic
     client = anthropic.Anthropic()
     msg = client.messages.create(
-        model=MODEL, max_tokens=600, system=SYSTEM_PROMPT,
+        model=MODEL, max_tokens=2000, system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": "Evidence pack:\n```json\n" + json.dumps(pack, indent=2) + "\n```"}],
     )
-    return msg.content[0].text
+    # some models return a reasoning block before the answer; keep only the text blocks
+    return "".join(block.text for block in msg.content if block.type == "text").strip()
 
 
 def summarise_with_template(pack):
@@ -107,24 +116,22 @@ def summarise_with_template(pack):
     ])
 
 
-def _numbers(obj):
-    """All numbers that appear anywhere in the evidence pack."""
-    found = set()
-    for v in re.findall(r"-?\d[\d,]*\.?\d*", json.dumps(obj)):
-        try:
-            found.add(float(v.replace(",", "")))
-        except ValueError:
-            pass
-    return found
+DATE_TIME = re.compile(r"\d{4}-\d{2}-\d{2}|\d{1,2}:\d{2}")
+NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?")
+
+
+def _numbers(text):
+    """All numbers in a piece of text, ignoring dates and clock times."""
+    return {float(n.replace(",", "")) for n in NUMBER.findall(DATE_TIME.sub(" ", text))}
 
 
 def faithfulness_check(text, pack):
     """Flag numbers in the summary that do not match anything in the evidence pack."""
-    allowed = _numbers(pack)
+    allowed = _numbers(json.dumps(pack))
     allowed |= {round(a * 100, 1) for a in allowed if 0 <= a <= 1}     # 0.85 may be written as 85%
     unsupported = []
-    for raw in re.findall(r"\d[\d,]*\.?\d*", text):
-        n = float(raw.replace(",", "").rstrip("."))
+    for raw in NUMBER.findall(DATE_TIME.sub(" ", text)):
+        n = float(raw.replace(",", ""))
         if n in allowed or n < 10 or any(abs(n - a) <= 0.01 * max(abs(a), 1) for a in allowed):
             continue          # small counts (e.g. "2 currencies") and rounding differences are tolerated
         unsupported.append(raw)

@@ -26,52 +26,58 @@
     "most payments sent in one hour": 2.0,
     "share of outgoing payments with currency conversion": 0.0
   },
+  "notes": "Profile figures exclude self-transfers. amount_native is in pay_cur; amount_usd is converted with dataset-implied rates.",
   "transactions": [
     {
       "ts": "2022-09-08 10:26",
       "direction": "OUT",
       "counterparty": "0125633_8098EF090",
-      "amount": 2202.67,
+      "amount_native": 2202.67,
       "pay_cur": "Canadian Dollar",
       "recv_cur": "Canadian Dollar",
+      "amount_usd": 1669.57,
       "pay_format": "ACH"
     },
     {
       "ts": "2022-09-08 19:48",
       "direction": "IN",
       "counterparty": "007675_8093BA230",
-      "amount": 22304.22,
+      "amount_native": 22304.22,
       "pay_cur": "Canadian Dollar",
       "recv_cur": "Canadian Dollar",
+      "amount_usd": 16906.1,
       "pay_format": "ACH"
     },
     {
       "ts": "2022-09-10 15:43",
-      "direction": "OUT",
-      "counterparty": "0225215_8098DA930",
-      "amount": 22768.72,
+      "direction": "SELF (currency exchange)",
+      "counterparty": "-",
+      "amount_native": 22768.72,
       "pay_cur": "Canadian Dollar",
       "recv_cur": "Yen",
+      "amount_usd": 17258.18,
       "pay_format": "ACH"
     },
     {
       "ts": "2022-09-10 15:43",
       "direction": "OUT",
       "counterparty": "0210261_803B8BFC0",
-      "amount": 37108.72,
+      "amount_native": 37108.72,
       "pay_cur": "Yen",
       "recv_cur": "Yen",
+      "amount_usd": 352.08,
       "pay_format": "ACH"
     },
     {
       "ts": "2022-09-10 15:43",
       "direction": "OUT",
       "counterparty": "0210261_803B8BFC0",
-      "amount": 1781903.4,
+      "amount_native": 1781903.4,
       "pay_cur": "Yen",
       "recv_cur": "Yen",
+      "amount_usd": 16906.11,
       "pay_format": "ACH"
     }
   ],
-  "transactions_shown": "5 of 5"
+  "transactions_shown": "5 of 5 (1 self-transfers)"
 }
