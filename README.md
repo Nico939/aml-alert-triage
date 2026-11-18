@@ -99,7 +99,3 @@ At 5M rows pandas is enough; the Spark version shows how the same logic runs whe
 ├── databricks/           # Databricks notebook: Delta tables, MLflow tracking
 └── outputs/              # metrics, figures, alert queue, case summaries, evidence packs
 ```
-
----
-
-Built with AI pair programming (Claude).
